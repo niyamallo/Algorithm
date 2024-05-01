@@ -33,16 +33,17 @@ public class Baekjoon2178 {
 
     private static void BFS(int x, int y) {
         Queue<int[]> queue = new LinkedList<>();
+        visited[x][y] = true;
         queue.add(new int[] {x, y});
         while(!queue.isEmpty()) {
             int[] now = queue.poll();
-            visited[now[0]][now[1]] = true;
             for(int i=0; i<4; i++) {
                 int a = now[0] + dx[i];
                 int b = now[1] + dy[i];
                 if(0<=a && a<N && 0<=b && b<M) {
                     if(!visited[a][b] && A[a][b] != 0) {
                         A[a][b] = A[now[0]][now[1]] + 1;
+                        visited[a][b] = true;
                         queue.add(new int[] {a,b});
                     }
                 }
